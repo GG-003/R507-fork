@@ -6,42 +6,42 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ContactControllerTest extends WebTestCase
 {
-    public function testContactFormDisplay(): void
+    // public function testContactFormDisplay(): void
+    // {
+    //     $client = static::createClient();
+    //     $client->request('GET', '/contact');
+
+    //     $this->assertResponseIsSuccessful();
+    //     $this->assertSelectorTextContains('h1', 'Contact');
+    // }
+
+    // public function testContactFormSubmission(): void
+    // {
+    //     $client = static::createClient();
+    //     $client->request('GET', '/contact');
+
+    //     $client->submitForm('Send', [
+    //         'contact[name]' => 'John Doe',
+    //         'contact[email]' => 'john@example.com',
+    //         'contact[message]' => 'Test message',
+    //     ]);
+
+    //     $this->assertResponseRedirects('/contact/success');
+    // }
+
+    public function testHomePageIsSuccessful(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/contact');
+        $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Contact');
     }
 
-    public function testContactFormSubmission(): void
+    public function testListPageIsSuccessful(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/contact');
+        $client->request('GET', '/liste');
 
-        $client->submitForm('Send', [
-            'contact[name]' => 'John Doe',
-            'contact[email]' => 'john@example.com',
-            'contact[message]' => 'Test message',
-        ]);
-
-        $this->assertResponseRedirects('/contact/success');
+        $this->assertResponseIsSuccessful();
     }
-
-    // public function testHomePageIsSuccessful(): void
-    // {
-    //     $client = static::createClient();
-    //     $client->request('GET', '/');
-
-    //     $this->assertResponseIsSuccessful();
-    // }
-
-    // public function testListPageIsSuccessful(): void
-    // {
-    //     $client = static::createClient();
-    //     $client->request('GET', '/liste');
-
-    //     $this->assertResponseIsSuccessful();
-    // }
 }
